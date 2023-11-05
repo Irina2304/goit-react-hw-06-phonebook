@@ -1,7 +1,7 @@
 import { AddForm } from './AddForm/AddForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { Filter } from './Filter/Filter';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 // const getContacts = () => {
 //   const savedContacts = localStorage.getItem('contacts');
