@@ -1,21 +1,19 @@
-import { StyledInput, StyledText } from "./Filter.styled"
+import { useDispatch } from 'react-redux';
+import { findName } from 'redux/filterSlice';
+import { StyledInput, StyledText } from './Filter.styled';
 
+export const Filter = () => {
+  const dispatch = useDispatch();
 
-export const Filter = ({ onChangeFilter }) => {
+  const onChange = evt => {
+    const filterName = evt.currentTarget.value;
+    dispatch(findName(filterName));
+  };
 
-    const onChange = evt => {
-        const filterName = evt.currentTarget.value
-        onChangeFilter(filterName)
-    }
-
-    return (
-        <div>
-            <StyledText>Find contacts by name:</StyledText>
-            <StyledInput
-                type="text"
-                name='filter'
-                onChange={onChange}
-            />
-        </div>
-    );
-}
+  return (
+    <div>
+      <StyledText>Find contacts by name:</StyledText>
+      <StyledInput type="text" name="filter" onChange={onChange} />
+    </div>
+  );
+};

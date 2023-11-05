@@ -1,17 +1,18 @@
-import { ContactItem } from "components/ContactItem/ContactItem";
+import { ContactItem } from 'components/ContactItem/ContactItem';
+import { useSelector } from 'react-redux';
 
+export const ContactsList = () => {
+  const { contacts } = useSelector(state => state.contacts);
+  const { filter } = useSelector(state => state.filter);
+  const visibleItems = contacts.filter(item =>
+    item.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
-export const ContactsList = ({ items, onClickDel }) => {
-
-    return (     
-        <ul>
-            {items.map(item => (
-                <ContactItem
-                    key={item.id}
-                    item={item}
-                    onClickDel={onClickDel}
-                />
-            ))}
-        </ul>
-    )
+  return (
+    <ul>
+      {visibleItems.map(item => (
+        <ContactItem key={item.id} item={item} />
+      ))}
+    </ul>
+  );
 };
