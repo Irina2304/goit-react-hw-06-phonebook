@@ -10,12 +10,13 @@ import {
   StyledInput,
 } from './AddForm.styled';
 import { useState } from 'react';
+import { contactsState } from 'redux/selectors';
 
 export const AddForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const { contacts } = useSelector(state => state.contacts);
+  const contacts = useSelector(contactsState);
 
   const onChange = evt => {
     let nameInput = evt.currentTarget.name;
